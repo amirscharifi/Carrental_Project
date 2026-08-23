@@ -1,12 +1,12 @@
 package de.unikassel.se.swq.carrental.model;
 
 public record PriceBreakdown(
-        int basePrice,
-        int durationPrice,
-        int statusDiscount,
-        int relocationFee
+        double basePrice,
+        double durationDiscount,
+        double statusDiscount,
+        double relocationFee
 ) {
-    public int total() {
-        return basePrice + durationPrice - statusDiscount + relocationFee;
+    public double total() {
+        return basePrice - durationDiscount - statusDiscount + relocationFee;
     }
 }

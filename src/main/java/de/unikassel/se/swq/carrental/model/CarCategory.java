@@ -5,13 +5,13 @@ public enum CarCategory {
     Station_Wagon(30),
     Van(45);
 
-    private final int basePrice;
+    private final double basePrice;
 
-    CarCategory(int basePrice) {
+    CarCategory(double basePrice) {
         this.basePrice = basePrice;
     }
 
-    public int getBasePrice() {
+    public double getBasePrice() {
         return basePrice;
     }
 

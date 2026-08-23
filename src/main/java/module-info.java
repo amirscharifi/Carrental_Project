@@ -4,6 +4,7 @@ module com.example.carrental {
     requires java.desktop;
     requires spring.boot.autoconfigure;
     requires spring.boot;
+    requires com.example.carrental;
 
 
     opens com.example.carrental to javafx.fxml;

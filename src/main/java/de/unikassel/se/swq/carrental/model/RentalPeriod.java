@@ -12,12 +12,12 @@ public class RentalPeriod {
         this.endDate = endDate;
     }
 
-    private int getDurationInDays(LocalDate startDate, LocalDate endDate) {
+    public int getDurationInDays() {
         return (int) ChronoUnit.DAYS.between(startDate, endDate);
     }
 
     public boolean isValid() {
-        return getDurationInDays(startDate, endDate) >= 1 && endDate.isAfter(startDate);
+        return getDurationInDays() >= 1 && endDate.isAfter(startDate);
     }
 
     public boolean overlapsWith(RentalPeriod other) {
