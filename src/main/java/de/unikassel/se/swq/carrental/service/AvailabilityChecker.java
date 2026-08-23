@@ -17,10 +17,10 @@ public class AvailabilityChecker {
     CarRepository carRepository;
     DistanceMatrix distanceMatrix;
 
-    public AvailabilityChecker(ReservationRepository reservationRepository, CarRepository carRepository) {
+    public AvailabilityChecker(ReservationRepository reservationRepository, CarRepository carRepository, DistanceMatrix distanceMatrix) {
         this.reservationRepository = reservationRepository;
         this.carRepository = carRepository;
-        this.distanceMatrix = new DistanceMatrix();
+        this.distanceMatrix = distanceMatrix;
     }
 
     public Optional<Car> checkAvailability(RentalRequest request) {

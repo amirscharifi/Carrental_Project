@@ -5,6 +5,7 @@ module com.example.carrental {
     requires spring.boot.autoconfigure;
     requires spring.boot;
     requires com.example.carrental;
+    requires spring.context;
 
 
     opens com.example.carrental to javafx.fxml;
