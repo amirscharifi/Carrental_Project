@@ -1,8 +1,8 @@
 package de.unikassel.se.swq.carrental.service;
 
 import de.unikassel.se.swq.carrental.model.Car;
+import de.unikassel.se.swq.carrental.model.RentalPeriod;
 import de.unikassel.se.swq.carrental.model.RentalRequest;
-import de.unikassel.se.swq.carrental.model.Reservation;
 import de.unikassel.se.swq.carrental.port.CarRepository;
 import de.unikassel.se.swq.carrental.port.ReservationRepository;
 
@@ -39,9 +39,8 @@ public class AvailabilityChecker {
         }
 
         for (Car car : cars) {
-            List<Reservation> reservation = reservationRepository.findByCarId(car.id());
 
-            if (reservation.stream().noneMatch(element -> element.period().overlapsWith(request.period()))) {
+            if (carStillAvailable(car, request.period())) {
                 return Optional.of(car);
             }
 
@@ -63,9 +62,8 @@ public class AvailabilityChecker {
         List<Car> availableCars = new ArrayList<>();
 
         for (Car car : cars) {
-            List<Reservation> reservation = reservationRepository.findByCarId(car.id());
 
-            if (reservation.stream().noneMatch(element -> element.period().overlapsWith(request.period()))) {
+            if (carStillAvailable(car, request.period())) {
                 availableCars.add(car);
             }
 
@@ -74,6 +72,11 @@ public class AvailabilityChecker {
         return availableCars.stream().min(Comparator.comparing(car -> distanceMatrix.getDistance(car.location(), request.pickupLocation())));
 
 
+    }
+
+    public boolean carStillAvailable(Car car, RentalPeriod rentalPeriod) {
+        return reservationRepository.findByCarId(car.id()).stream()
+                .noneMatch(element -> element.period().overlapsWith(rentalPeriod));
     }
 
 }

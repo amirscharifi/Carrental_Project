@@ -8,6 +8,8 @@ import de.unikassel.se.swq.carrental.service.AvailabilityChecker;
 import de.unikassel.se.swq.carrental.service.DistanceMatrix;
 import de.unikassel.se.swq.carrental.service.PricingCalculator;
 import de.unikassel.se.swq.carrental.service.RelocationFeeCalculator;
+import de.unikassel.se.swq.carrental.usecase.ConfirmReservationUseCase;
+import de.unikassel.se.swq.carrental.usecase.RequestOfferUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,5 +45,16 @@ public class BeanConfig {
     public PricingCalculator pricingCalculator(RelocationFeeCalculator relocationFeeCalculator, DistanceMatrix distanceMatrix) {
         return new PricingCalculator(relocationFeeCalculator, distanceMatrix);
     }
+
+    @Bean
+    public RequestOfferUseCase requestOfferUseCase(AvailabilityChecker availabilityChecker, PricingCalculator pricingCalculator) {
+        return new RequestOfferUseCase(availabilityChecker, pricingCalculator);
+    }
+
+    @Bean
+    public ConfirmReservationUseCase confirmReservationUseCase(ReservationRepository reservationRepository, AvailabilityChecker availabilityChecker) {
+        return new ConfirmReservationUseCase(reservationRepository, availabilityChecker);
+    }
+
 
 }
