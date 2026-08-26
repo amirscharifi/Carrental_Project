@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation failed</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1 id="page-title">Sorry, this car is no longer available</h1>
+<p id="failure-reason" th:text="${reason}">reason</p>
+<p><a id="back-to-start-link" th:href="@{/}">Back to start</a></p>
+</body>
+</html>

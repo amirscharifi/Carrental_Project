@@ -1,22 +1,25 @@
 body{
     font-family: "Arial";
-    margin: 2rem auto;
     color: black;
     background: azure;
     padding-left: 1rem;
     padding-right: 1rem;
+    font-size: 15px;
 }
 
 h1{
     font-family: Arial Black;
     border-bottom: 3px solid;
     padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+select, input{
+    font-size: 15px;
 }
 
 button{
     font-size: 20px;
-    font-weight: bold;
     background-color: cadetblue;
     color: white;
     border: none;
@@ -26,5 +29,5 @@ button{
 }
 
 button:hover{
-    background-color: green;
+    background-color: darkgreen;
 }

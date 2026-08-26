@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Your Offer</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
+<h1 id="page-title">Your offer</h1>
+
+<h2>Request</h2>
+<ul>
+    <li>Category: <span id="offer-category" th:text="${offer.car.category}">CATEGORY</span></li>
+    <li>Pickup location: <span id="offer-pickup-location" th:text="${offer.request.pickupLocation}">pickup</span></li>
+    <li>Return location: <span id="offer-return-location" th:text="${offer.request.returnLocation}">return</span></li>
+    <li>Period:
+        <span id="offer-start-date" th:text="${offer.request.period.startDate}">start</span> &ndash;
+        <span id="offer-end-date" th:text="${offer.request.period.endDate}">end</span>
+        (<span id="offer-duration-days" th:text="${offer.request.period.durationInDays}">0</span> days)
+    </li>
+    <li>Customer status: <span id="offer-customer-status" th:text="${offer.request.customerStatus}">STATUS</span></li>
+</ul>
+
+<h2>Vehicle</h2>
+<ul>
+    <li>Car: <span id="offer-car-id" th:text="${offer.car.id}">car-id</span></li>
+    <li>Stationed at: <span id="offer-actual-location" th:text="${offer.actualLocation}">location</span></li>
+    <li id="relocation-info" th:if="${offer.relocationRequired}">
+        Relocation from <span th:text="${offer.actualLocation}">loc</span>
+        to <span th:text="${offer.request.pickupLocation}">pickup</span>
+        (<span id="offer-relocation-distance" th:text="${offer.relocationDistance}">0</span> km)
+    </li>
+    <li id="no-relocation-info" th:unless="${offer.relocationRequired}">No relocation required.</li>
+</ul>
+
+<h2>Price</h2>
+<table id="price-table" border="1" cellpadding="4">
+    <tr><td>Base price</td>      <td id="price-base" th:text="${offer.priceBreakdown.basePrice}">0</td></tr>
+    <tr><td>Duration discount</td><td id="price-duration" th:text="${offer.priceBreakdown.durationDiscount}">0</td></tr>
+    <tr><td>Status discount</td> <td id="price-status-discount" th:text="'- ' + ${offer.priceBreakdown.statusDiscount}">0</td></tr>
+    <tr><td>Relocation fee</td>  <td id="price-relocation-fee" th:text="${offer.priceBreakdown.relocationFee}">0</td></tr>
+    <tr><th>Total</th>           <th id="price-total" th:text="${offer.priceBreakdown.total()}">0</th></tr>
+</table>
+
+<form id="confirm-reservation-form" method="post" th:action="@{/reservations/confirm}" style="margin-top:1em">
+    <button id="confirm-reservation-button" type="submit">Confirm reservation</button>
+</form>
+
+<p><a id="back-to-start-link" th:href="@{/}">Back to start</a></p>
 
 </body>
 </html>

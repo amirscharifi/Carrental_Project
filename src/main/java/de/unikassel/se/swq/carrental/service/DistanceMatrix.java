@@ -7,25 +7,29 @@ import java.util.Map;
 public class DistanceMatrix {
 
     private static final Map<Location, Map<Location, Integer>> distances = Map.of(
-            Location.KASSEL, Map.of(
-                    Location.GOETTINGEN, 55,
-                    Location.PADERBORN, 85,
-                    Location.GIESSEN, 115
+            Location.Kassel, Map.of(
+                    Location.Goettingen, 55,
+                    Location.Paderborn, 85,
+                    Location.Giessen, 115,
+                    Location.Kassel, 0
             ),
-            Location.GOETTINGEN, Map.of(
-                    Location.KASSEL, 55,
-                    Location.PADERBORN, 145,
-                    Location.GIESSEN, 170
+            Location.Goettingen, Map.of(
+                    Location.Kassel, 55,
+                    Location.Paderborn, 145,
+                    Location.Giessen, 170,
+                    Location.Goettingen, 0
             ),
-            Location.GIESSEN, Map.of(
-                    Location.KASSEL, 115,
-                    Location.GOETTINGEN, 170,
-                    Location.PADERBORN, 195
+            Location.Giessen, Map.of(
+                    Location.Kassel, 115,
+                    Location.Goettingen, 170,
+                    Location.Paderborn, 195,
+                    Location.Giessen, 0
             ),
-            Location.PADERBORN, Map.of(
-                    Location.KASSEL, 85,
-                    Location.GOETTINGEN, 145,
-                    Location.GIESSEN, 195
+            Location.Paderborn, Map.of(
+                    Location.Kassel, 85,
+                    Location.Goettingen, 145,
+                    Location.Giessen, 195,
+                    Location.Paderborn, 0
             )
     );
 

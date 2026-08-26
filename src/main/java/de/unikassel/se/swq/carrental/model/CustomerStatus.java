@@ -1,9 +1,9 @@
 package de.unikassel.se.swq.carrental.model;
 
 public enum CustomerStatus {
-    STANDARD(0),
-    SILVER(0.05),
-    GOLD(0.10);
+    Standard(0),
+    Silver(0.05),
+    Gold(0.10);
 
     private final double discountPercentage;
 

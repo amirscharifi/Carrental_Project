@@ -5,7 +5,7 @@ public record Offer(
         Car car,
         Location actualLocation,
         boolean relocationRequired,
-        int relocationDistanceKm,
+        int relocationDistance,
         PriceBreakdown priceBreakdown
 ) {
 }

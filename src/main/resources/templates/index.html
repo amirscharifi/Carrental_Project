@@ -6,54 +6,62 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-    <h1 id="page-title">Request a rental offer</h1>
+<h1 id="page-title">Request a rental offer</h1>
 
-    <form id="offer-request-form" method="post" th:action="@{/request}">
-        <p>
-            <label for="pickupLocation">Pickup location</label><br>
-            <select id="pickupLocation" name="pickupLocation" required>
-                <option th:each="loc : ${locations}"
-                        th:value="${loc}" th:text="${loc}">Location</option>
-            </select>
-        </p>
+<p id="error-message" th:if="${error}" th:text="${error}" style="color:#b00020">Error message</p>
 
-        <p>
-            <label for="returnLocation">Return location</label><br>
-            <select id="returnLocation" name="returnLocation" required>
-                <option th:each="loc : ${locations}"
-                        th:value="${loc}" th:text="${loc}">Location</option>
-            </select>
-        </p>
+<form id="offer-request-form" method="post" th:action="@{/request}">
+    <p>
+        <label for="pickupLocation">Pickup location</label><br>
+        <select id="pickupLocation" name="pickupLocation" required>
+            <option th:each="loc : ${locations}"
+                    th:value="${loc}" th:text="${loc}">Location
+            </option>
+        </select>
+    </p>
 
-        <p>
-            <label for="category">Car Category</label><br>
-            <select id="category" name="category" required>
-                <option th:each="cat : ${categories}"
-                        th:value="${cat}" th:text="${cat}">Category</option>
-            </select>
-        </p>
+    <p>
+        <label for="returnLocation">Return location</label><br>
+        <select id="returnLocation" name="returnLocation" required>
+            <option th:each="loc : ${locations}"
+                    th:value="${loc}" th:text="${loc}">Location
+            </option>
+        </select>
+    </p>
 
-        <p>
-            <label for="customerStatus">Customer Status</label><br>
-            <select id="customerStatus" name="customerStatus" required>
-                <option th:each="st : ${statuses}"
-                        th:value="${st}" th:text="${st}">Status</option>
-            </select>
-        </p>
+    <p>
+        <label for="category">Car Category</label><br>
+        <select id="category" name="category" required>
+            <option th:each="cat : ${categories}"
+                    th:value="${cat}" th:text="${cat}">Category
+            </option>
+        </select>
+    </p>
 
-        <p>
-            <label for="startDate">Start Date</label><br>
-            <input type="date" id="startDate" name="startDate" required>
-        </p>
+    <p>
+        <label for="customerStatus">Customer Status</label><br>
+        <select id="customerStatus" name="customerStatus" required>
+            <option th:each="st : ${statuses}"
+                    th:value="${st}" th:text="${st}">Status
+            </option>
+        </select>
+    </p>
 
-        <p>
-            <label for="endDate">End Date</label><br>
-            <input type="date" id="endDate" name="endDate" required>
-        </p>
+    <p>
+        <label for="startDate">Start Date</label><br>
+        <input type="date" id="startDate" name="startDate" required>
+    </p>
 
-        <p><button id="submit-offer-request" type="submit">Get Offer</button></p>
+    <p>
+        <label for="endDate">End Date</label><br>
+        <input type="date" id="endDate" name="endDate" required>
+    </p>
+
+    <p>
+        <button id="submit-offer-request" type="submit">Get Offer</button>
+    </p>
 
 
-    </form>
+</form>
 </body>
 </html>

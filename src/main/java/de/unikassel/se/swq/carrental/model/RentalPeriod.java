@@ -4,12 +4,19 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class RentalPeriod {
-    LocalDate startDate;
-    LocalDate endDate;
+    public LocalDate startDate;
+    public LocalDate endDate;
 
-    RentalPeriod(LocalDate startDate, LocalDate endDate) {
+    public RentalPeriod(LocalDate startDate, LocalDate endDate) {
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public int getDurationInDays() {
@@ -17,7 +24,7 @@ public class RentalPeriod {
     }
 
     public boolean isValid() {
-        return getDurationInDays() >= 1 && endDate.isAfter(startDate);
+        return getDurationInDays() >= 1 && endDate.isAfter(startDate) && !startDate.isBefore(LocalDate.now());
     }
 
     public boolean overlapsWith(RentalPeriod other) {

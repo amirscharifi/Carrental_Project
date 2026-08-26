@@ -24,7 +24,7 @@ public class ConfirmReservationUseCase {
             Reservation reservation = new Reservation(null, offer.car(), offer.request().period(),
                     offer.request().customerStatus(), offer.priceBreakdown());
 
-            reservationRepository.save(reservation);
+            reservation = reservationRepository.save(reservation);
             return Optional.of(reservation);
         }
 

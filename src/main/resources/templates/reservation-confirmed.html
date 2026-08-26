@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation confirmed</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1 id="page-title">Reservation confirmed</h1>
+
+<p>Reservation ID: <span id="reservation-id" th:text="${reservation.id}">id</span></p>
+<p>Car: <span id="reservation-car-id" th:text="${reservation.car.id}">car id</span>
+    (<span id="reservation-car-category" th:text="${reservation.car.category}">category</span>)</p>
+<p>Period: <span id="reservation-start-date" th:text="${reservation.period.startDate}">start</span>
+    &ndash; <span id="reservation-end-date" th:text="${reservation.period.endDate}">end</span></p>
+
+<h2>Price breakdown</h2>
+<ul>
+    <li>Base price: <span id="reservation-price-base" th:text="${reservation.priceBreakdown.basePrice}">0</span></li>
+    <li>Duration discount: <span id="reservation-price-duration" th:text="${reservation.priceBreakdown.durationDiscount}">0</span></li>
+    <li>Status discount: -<span id="reservation-price-status-discount" th:text="${reservation.priceBreakdown.statusDiscount}">0</span></li>
+    <li>Relocation fee: <span id="reservation-price-relocation-fee" th:text="${reservation.priceBreakdown.relocationFee}">0</span></li>
+    <li><strong>Total: <span id="reservation-price-total" th:text="${reservation.priceBreakdown.total()}">0</span></strong></li>
+</ul>
+
+<p><a id="back-to-start-link" th:href="@{/}">Back to start</a></p>
+</body>
+</html>
