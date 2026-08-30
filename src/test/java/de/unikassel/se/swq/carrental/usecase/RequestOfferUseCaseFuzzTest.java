@@ -21,12 +21,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @RunWith(JQF.class)
 public class RequestOfferUseCaseFuzzTest {
 
+    //------------------------------------Fuzz-Testing------------------------------------//
+
     @Fuzz
     public void fuzzEvaluateRentalRequest(@From(FleetTestCaseGenerator.class) FleetTestCase testCase) {
 
         System.out.println("Cars:" + testCase.cars());
-        System.out.println("Reservations: " +testCase.reservations());
-        System.out.println("Requests: "+testCase.request());
+        System.out.println("Reservations: " + testCase.reservations());
+        System.out.println("Requests: " + testCase.request());
 
         StubCarRepository carRepo = new StubCarRepository(testCase.cars());
         StubReservationRepository reservationRepo = new StubReservationRepository(testCase.reservations());
