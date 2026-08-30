@@ -101,6 +101,30 @@ public class AvailabilityCheckerTest {
     }
 
     @Test
+    public void relocationAvailabilityWhenRequestNullTest() {
+        when(carRepository.findByCategory(CarCategory.Compact_Car))
+                .thenReturn(List.of());
+
+        assertTrue(availabilityChecker.checkRelocationAvailability(null).isEmpty());
+    }
+
+    @Test
+    public void relocationAvailabilityWithInvalidPeriodTest() {
+        List<Car> cars = List.of(new Car("car-1", Location.Giessen, CarCategory.Compact_Car),
+                new Car("car-2", Location.Goettingen, CarCategory.Compact_Car));
+
+        RentalPeriod period = new RentalPeriod(LocalDate.now(), LocalDate.now());
+
+        when(carRepository.findByCategory(CarCategory.Compact_Car))
+                .thenReturn(cars);
+
+        RentalRequest request = new RentalRequest(Location.Kassel, Location.Kassel,
+                period, CarCategory.Compact_Car, CustomerStatus.Gold);
+
+        assertTrue(availabilityChecker.checkRelocationAvailability(request).isEmpty());
+    }
+
+    @Test
     public void carStillAvailableTest() {
         Car car = new Car("car-1", Location.Giessen, CarCategory.Compact_Car);
         RentalPeriod period = new RentalPeriod(LocalDate.now(), LocalDate.now().plusDays(3));
